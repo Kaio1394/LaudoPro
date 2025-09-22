@@ -1,0 +1,2 @@
+alembic revision --autogenerate -m "create customers table"
+alembic upgrade head
