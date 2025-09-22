@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.routes import customer_router
+from app.api.routes.v1 import customer_router_v1
 
-app = FastAPI(title="Meu Projeto FastAPI")
-app.include_router(customer_router)
+app = FastAPI(title="Laudo Pro")
+app.include_router(customer_router_v1)
