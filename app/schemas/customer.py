@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class CustomerCreate(BaseModel):
+class CustomerBase(BaseModel):
     fantasy_name: str
     cnpj: str
     cnpj_formated: str

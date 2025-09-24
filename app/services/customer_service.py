@@ -1,5 +1,5 @@
 from app.repositories.customer_repository import CustomerRepository
-from app.schemas.customer import CustomerCreate
+from app.schemas.customer import CustomerBase
 from app.models.customer import Customer
 from sqlalchemy.orm import Session
 
@@ -7,7 +7,7 @@ class CustomerService:
     def __init__(self, db: Session):
         self.repository = CustomerRepository(db)
         
-    def create_customer(self, customer: CustomerCreate) -> Customer:
+    def create_customer(self, customer: CustomerBase) -> Customer:
         existing_customer_fantasy_name = self.repository.get_by_fantasy_name(customer.fantasy_name)
         if existing_customer_fantasy_name:
             raise ValueError(f"Customer already exists with fantasy name '{customer.fantasy_name}'.")

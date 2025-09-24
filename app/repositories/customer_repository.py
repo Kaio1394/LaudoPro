@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models.customer import Customer
-from app.schemas import CustomerCreate
+from app.schemas import CustomerBase
 
 class CustomerRepository:
     def __init__(self, db: Session):
@@ -18,7 +18,7 @@ class CustomerRepository:
     def get_by_cnpj(self, cnpj: str):
         return self.db.query(Customer).filter(Customer.cnpj == cnpj).first()
     
-    def create(self, customer: CustomerCreate) -> Customer:
+    def create(self, customer: CustomerBase) -> Customer:
         db_customer = Customer()
         db_customer.fantasy_name = customer.fantasy_name
         db_customer.cnpj = customer.cnpj
